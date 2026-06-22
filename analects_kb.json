@@ -1,0 +1,108 @@
+{
+  "samples": [
+    {
+      "id": "T-001",
+      "original": "学而时习之，不亦说乎？",
+      "translations": [
+        {
+           "translator": "理雅各",
+      "text": "Is it not pleasant to learn with a constant perseverance and application?",
+      "literal_score": 0,
+      "archaic_score": 0,
+      "first_published": "1893"
+        },
+        {
+  "translator": "辜鸿铭",
+      "text": "It is indeed a pleasure to acquire knowledge and then to constantly review it.",
+      "literal_score": 100,
+      "archaic_score": 100,
+      "first_published": "1898"
+        }
+      ]
+    },
+    {
+      "id": "T-002",
+      "original": "有朋自远方来，不亦乐乎？",
+      "translations": [
+        {
+          "translator": "理雅各",
+          "text": "Is it not delightful to have friends coming from distant quarters?",
+          "literal_score": 10,
+          "archaic_score": 10
+        },
+        {
+          "translator": "辜鸿铭",
+          "text": "And is it not a great pleasure to have friends come from afar to visit you?",
+          "literal_score": 80,
+          "archaic_score": 80
+        }
+      ]
+    },
+    {
+      "id": "T-003",
+      "original": "人不知而不愠，不亦君子乎？",
+      "translations": [
+        {
+          "translator": "理雅各",
+          "text": "Is he not a man of complete virtue, who feels no discomposure though men take no note of him?",
+          "literal_score": 20,
+          "archaic_score": 20
+        },
+        {
+          "translator": "辜鸿铭",
+          "text": "Suppose a man is not known or appreciated by the world, and yet he feels no resentment — is he not indeed a wise and good man?",
+          "literal_score": 90,
+          "archaic_score": 90
+        }
+      ]
+    },
+    {
+      "id": "T-004",
+      "original": "温故而知新，可以为师矣。",
+      "translations": [
+        {
+          "translator": "理雅各",
+          "text": "If a man will keep constantly reviewing what he has acquired, and keep continually advancing to new attainments, he may be a teacher of others.",
+          "literal_score": 15,
+          "archaic_score": 15
+        },
+        {
+          "translator": "辜鸿铭",
+          "text": "A man who can constantly discover new knowledge while reviewing the old is qualified to be a teacher.",
+          "literal_score": 85,
+          "archaic_score": 85
+        }
+      ]
+    },
+    {
+      "id": "T-005",
+      "original": "吾道一以贯之。",
+      "translations": [
+        {
+          "translator": "理雅各",
+          "text": "My doctrine is that of an all-pervading unity.",
+          "literal_score": 30,
+          "archaic_score": 30
+        },
+        {
+          "translator": "辜鸿铭",
+          "text": "The great principle of my teaching is that everything is connected into one.",
+          "literal_score": 90,
+          "archaic_score": 90
+        }
+      ]
+    }
+  ],
+  "style_mapping": {
+    "literal_to_free": {
+      "0-33": "偏好直译。保留原文语序和字面意思，不增删解释性内容。关键词字面译（学→learn，习→practice）。",
+      "34-66": "混合策略。部分调整句式，保留关键名词的字面意思。",
+      "67-100": "偏好意译。拆解原文意群，用目标语习惯表达重述，可增加衔接词（学→acquire knowledge）。"
+    },
+    "archaic_to_modern": {
+      "0-33": "偏好古雅风格。选用拉丁/希腊源大词（perseverance, discomposure），使用完整从句，避免缩写。",
+      "34-66": "中性风格。混合学术与日常词汇，标准书面语。",
+      "67-100": "偏好现代风格。选用日耳曼源短词（joy, help），使用缩写（it's, don't），可加破折号和口语化表达。"
+    }
+  }
+}

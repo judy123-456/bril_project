@@ -1,0 +1,56 @@
+{
+  "samples": [
+    {
+      "id": "SC-001",
+      "original_text": "Hargabarangtersebutadalah Rp 10.000.000 per unit, belumtermasuk PPN 11% dan biayapengiriman. Hargatetapberlakuselama 30 harisejaktanggalpenawaran.",
+      "price_value": "Rp 10.000.000 per unit",
+      "tax_status": "excluded (PPN 11%, biayapengiriman)",
+      "price_stability": "fixed (30 hari)",
+      "risk_tags": ["excluded_tax"],
+      "risk_message": "价格不含11% VAT和运费，最终到岸成本可能高于预期。请确认VAT是否可退税、运费承担方。价格有效期30天，若发货超出此期限需重新确认价格。"
+    },
+    {
+      "id": "SC-002",
+      "original_text": "Harga Rp 8.500.000 per pak, sudahtermasuk PPN. Hargadapatberubahsewaktu-waktutanpapemberitahuanterlebihdahulu.",
+      "price_value": "Rp 8.500.000 per pak",
+      "tax_status": "included (PPN)",
+      "price_stability": "variable (sewaktu-waktu)",
+      "risk_tags": ["variable_price"],
+      "risk_message": "价格可随时变动且无需事先通知，风险极高。建议要求对方锁定价格或加入书面确认条款。价格已含VAT，无需额外预算。"
+    },
+    {
+      "id": "SC-003",
+      "original_text": "Harga promo Rp 5.000.000 per unit untukpembelian minimal 100 unit. Hargabelumtermasuk PPN dan ongkoskirim. Harga promo berlakuhingga 31 Desember 2024.",
+      "price_value": "Rp 5.000.000 per unit (promo)",
+      "tax_status": "excluded (PPN, ongkoskirim)",
+      "price_stability": "fixed (until 31 Desember 2024)",
+      "risk_tags": ["min_purchase", "excluded_tax"],
+      "risk_message": "促销价有最低购买量要求（100 unit），未达到可能价格不同。不含VAT和运费，需额外计算。有效期明确，建议在截止前完成订单。"
+    },
+    {
+      "id": "SC-004",
+      "original_text": "Harga normal Rp 12.000.000 per unit. Diskon 10% untukpembayaranlunasdalam 7 hari. Hargasudahtermasuk PPN dan packing kayu.",
+      "price_value": "Rp 12.000.000 per unit (normal)",
+      "tax_status": "included (PPN, packing kayu)",
+      "price_stability": "fixed",
+      "risk_tags": ["early_payment_discount"],
+      "risk_message": "7天内付清可享10%折扣，注意付款期限。价格已含VAT和木箱包装，无隐藏费用。"
+    },
+    {
+      "id": "SC-005",
+      "original_text": "Hargareferensi Rp 7.200.000 per unit, belumtermasukpajak dan asuransi. Harga final akan disesuaikandengankurspadasaatpengiriman.",
+      "price_value": "Rp 7.200.000 per unit (referensi)",
+      "tax_status": "excluded (pajak, asuransi)",
+      "price_stability": "variable (exchange rate adjustment)",
+      "risk_tags": ["reference_price", "exchange_rate_risk"],
+      "risk_message": "参考价不是最终价格，仅作参考，具不确定性。最终价格按发货时汇率调整，存在汇兑损失风险。不含税费和保险，需自行确认。"
+    }
+  ],
+  "risk_keywords": {
+    "fixed": ["tetapberlaku", "berlakuhingga"],
+    "variable": ["dapatberubah", "akan disesuaikan"],
+    "included": ["sudahtermasuk"],
+    "excluded": ["belumtermasuk"],
+    "reference": ["referensi", "akan disesuaikan"]
+  }
+}
