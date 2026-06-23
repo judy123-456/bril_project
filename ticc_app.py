@@ -5,6 +5,16 @@ st.set_page_config(page_title="典籍译风调节器", page_icon="📜", layout=
 st.title("📜 典籍译风调节器 — 《论语》风格调色盘")
 st.caption("基于理雅各、辜鸿铭译例归纳，面向社交媒体传播场景")
 
+# ========== 初始化 session_state ==========
+if "literal" not in st.session_state:
+    st.session_state.literal = 50
+if "archaic" not in st.session_state:
+    st.session_state.archaic = 50
+if "auto_result" not in st.session_state:
+    st.session_state.auto_result = None
+if "preset" not in st.session_state:
+    st.session_state.preset = "自定义"
+
 with st.sidebar:
     st.markdown("### 🎛️ 控制面板")
     example_texts = [
@@ -32,39 +42,60 @@ with col_input:
 
 with col_sliders:
     st.markdown("### 风格调节")
-    literal_score = st.slider("直译 ↔ 意译", 0, 100, 50)
-    archaic_score = st.slider("古雅 ↔ 现代", 0, 100, 50)
+    
+    # ========== 预设风格选择 ==========
+    preset_options = ["自定义", "理雅各风格", "辜鸿铭风格", "平衡风格"]
+    selected_preset = st.radio(
+        "选择预设风格",
+        preset_options,
+        index=preset_options.index(st.session_state.preset) if st.session_state.preset in preset_options else 0,
+        horizontal=True,
+        key="preset_radio"
+    )
+    
+    if selected_preset == "理雅各风格":
+        st.session_state.literal = 0
+        st.session_state.archaic = 0
+        st.session_state.preset = "理雅各风格"
+    elif selected_preset == "辜鸿铭风格":
+        st.session_state.literal = 100
+        st.session_state.archaic = 100
+        st.session_state.preset = "辜鸿铭风格"
+    elif selected_preset == "平衡风格":
+        st.session_state.literal = 50
+        st.session_state.archaic = 50
+        st.session_state.preset = "平衡风格"
+    else:
+        st.session_state.preset = "自定义"
+    
+    literal_score = st.slider(
+        "直译 ↔ 意译",
+        0, 100,
+        value=st.session_state.literal,
+        key="literal"
+    )
+    archaic_score = st.slider(
+        "古雅 ↔ 现代",
+        0, 100,
+        value=st.session_state.archaic,
+        key="archaic"
+    )
 
-st.markdown("### ⚡ 一键预设风格")
-col_preset1, col_preset2, col_preset3 = st.columns(3)
-with col_preset1:
-    if st.button("🏛️ 理雅各风格（直译+古雅）", use_container_width=True):
-        literal_score = 0
-        archaic_score = 0
-        st.rerun()
-with col_preset2:
-    if st.button("🌿 辜鸿铭风格（意译+现代）", use_container_width=True):
-        literal_score = 100
-        archaic_score = 100
-        st.rerun()
-with col_preset3:
-    if st.button("⚖️ 平衡风格（居中）", use_container_width=True):
-        literal_score = 50
-        archaic_score = 50
-        st.rerun()
-
+# ========== 生成按钮 ==========
 if st.button("🎨 生成译文", type="primary"):
     if not original_text.strip():
         st.warning("请输入《论语》原文")
     else:
         with st.spinner("正在生成译文..."):
-            # ===== 真实调用B的接口 =====
             result = rewrite_analects(original_text, literal_score, archaic_score)
+            st.session_state.auto_result = result
 
-            st.markdown("---")
-            st.markdown("### ✨ 生成译文")
-            st.caption(f"当前参数：直译↔意译 = {literal_score}，古雅↔现代 = {archaic_score}")
-            st.success(result)
+# ========== 显示结果 ==========
+if st.session_state.auto_result:
+    st.markdown("---")
+    st.markdown("### ✨ 生成译文")
+    st.caption(f"当前参数：直译↔意译 = {st.session_state.literal}，古雅↔现代 = {st.session_state.archaic}")
+    st.success(st.session_state.auto_result)
 
 st.markdown("---")
-st.markdown("💡 **使用说明**\n1. 输入或选择《论语》原文\n2. 拖动滑块调节风格\n3. 点击预设风格快速切换\n4. 点击生成译文查看结果")
+st.markdown("💡 **使用说明**\n1. 输入或选择《论语》原文\n2. 选择预设风格或手动拖动滑块\n3. 点击生成译文查看结果")
